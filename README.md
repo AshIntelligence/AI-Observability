@@ -2,8 +2,6 @@
 
 [![System checks](https://github.com/AshIntelligence/AI-Observability/actions/workflows/tests.yml/badge.svg)](https://github.com/AshIntelligence/AI-Observability/actions/workflows/tests.yml)
 
-**[▶ Try MAUTAM live](https://ash-intelligence-lab.streamlit.app/?product=mautam-evaluation)** · **[Explore the full systems lab](https://ash-intelligence-lab.streamlit.app/)**
-
 `Python · AI evaluation · observability · release gates`
 
 MAUTAM is a product-level evaluation system for six things I want to see together when deciding whether an AI capability is healthy enough to advance:
