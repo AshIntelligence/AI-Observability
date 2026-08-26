@@ -1,15 +1,12 @@
 # MAUTAM — AI Product Evaluation
 
-**EVALUATE · AI product health**
+**EVALUATE flagship in the [Ash Intelligence Lab](https://github.com/AshIntelligence/agenticmine)**
 
-### Product question
-**How do you decide whether an AI capability deserves to SHIP, TUNE, SIMPLIFY or STOP?**
-
-**[▶ Try MAUTAM live](https://ash-intelligence-lab.streamlit.app/?product=mautam-evaluation)** · **[Explore the full systems lab](https://ash-intelligence-lab.streamlit.app/)**
+**[▶ Try MAUTAM live](https://ash-intelligence-lab.streamlit.app/?product=mautam-evaluation)** · **[Open the full lab](https://ash-intelligence-lab.streamlit.app/)**
 
 `Python · AI evaluation · observability · release gates`
 
-MAUTAM is the **EVALUATE** flagship in Ash Intelligence: a product-level measurement system that puts six things in the same decision surface instead of treating model quality as the whole product.
+Model quality is only one part of AI product health. MAUTAM evaluates six lenses together:
 
 - **M**odel & Response Quality
 - **A**doption
@@ -18,22 +15,22 @@ MAUTAM is the **EVALUATE** flagship in Ash Intelligence: a product-level measure
 - **A**vailability & Health
 - **M**easurable Business Impact
 
-A strong model score should not be able to hide weak workflow completion, poor controls, runtime instability or a product nobody uses. MAUTAM combines a weighted product score with hard trust and availability gates, then maps the result to **SHIP / TUNE / SIMPLIFY / STOP**.
+The evaluator combines a weighted score with hard trust and availability gates, then returns **SHIP / TUNE / SIMPLIFY / STOP**. A strong model score cannot cancel out a serious control or reliability failure.
 
-## What the code models
+## Decision logic
 
-There are two evaluation levels:
+There are two views:
 
-1. **Snapshot evaluation** — weighted contributions, weakest-lens detection, configurable thresholds and explicit gate failures.
-2. **Window evaluation** — average lens health, per-lens volatility and an **IMPROVING / STABLE / DEGRADING** trend across repeated snapshots.
+1. **Snapshot** — lens scores, weighted contribution, weakest lens, thresholds and gate failures.
+2. **Window** — average health, per-lens volatility and an **IMPROVING / STABLE / DEGRADING** trend across repeated snapshots.
 
-The window view exists because one healthy run is not enough to describe product health.
+The window view catches a system that looks healthy at one point in time while the underlying trend is moving the wrong way.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  Q[Model & response quality] --> D{Product decision}
+  Q[Model & response quality] --> D{Release decision}
   A[Adoption] --> D
   U[Workflow success] --> D
   T[Trust & controls] --> D
@@ -47,18 +44,6 @@ flowchart LR
   D --> X[STOP]
 ```
 
-## What it catches
-
-Examples include:
-
-- strong model output with weak workflow completion
-- high usage with poor controls
-- good offline scores with failing runtime health
-- a healthy point-in-time score while the underlying trend is deteriorating
-- technically impressive behavior with weak measurable product impact
-
-The product principle is simple: **evaluation should change what gets funded, shipped, simplified or stopped.**
-
 ## Run
 
 ```bash
@@ -69,8 +54,13 @@ python -m unittest discover -s tests -v
 
 No external services or API keys are required.
 
+## What it is designed to catch
+
+- strong model output with weak workflow completion
+- high usage with poor controls
+- good offline scores with failing runtime health
+- healthy point-in-time scores masking a deteriorating trend
+
 ## Next
 
-The next iteration is versioned evaluation windows, cohort trends, confidence intervals and capability-specific release gates.
-
-Part of **EVALUATE** in the broader [Ash Intelligence Lab](https://github.com/AshIntelligence/agenticmine).
+Versioned evaluation windows, cohort trends, confidence intervals and capability-specific release gates.
