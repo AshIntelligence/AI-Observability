@@ -1,10 +1,15 @@
 # MAUTAM — AI Product Evaluation
 
+**EVALUATE · AI product health**
+
+### Product question
+**How do you decide whether an AI capability deserves to SHIP, TUNE, SIMPLIFY or STOP?**
+
 **[▶ Try MAUTAM live](https://ash-intelligence-lab.streamlit.app/?product=mautam-evaluation)** · **[Explore the full systems lab](https://ash-intelligence-lab.streamlit.app/)**
 
 `Python · AI evaluation · observability · release gates`
 
-MAUTAM is a product-level evaluation system for six things I want to see together when deciding whether an AI capability is healthy enough to advance:
+MAUTAM is the **EVALUATE** flagship in Ash Intelligence: a product-level measurement system that puts six things in the same decision surface instead of treating model quality as the whole product.
 
 - **M**odel & Response Quality
 - **A**doption
@@ -13,7 +18,7 @@ MAUTAM is a product-level evaluation system for six things I want to see togethe
 - **A**vailability & Health
 - **M**easurable Business Impact
 
-A good model score should not be able to hide a serious trust or reliability problem. MAUTAM therefore combines a weighted product score with hard trust and availability gates and maps the result to **SHIP / TUNE / SIMPLIFY / STOP**.
+A strong model score should not be able to hide weak workflow completion, poor controls, runtime instability or a product nobody uses. MAUTAM combines a weighted product score with hard trust and availability gates, then maps the result to **SHIP / TUNE / SIMPLIFY / STOP**.
 
 ## What the code models
 
@@ -28,7 +33,7 @@ The window view exists because one healthy run is not enough to describe product
 
 ```mermaid
 flowchart LR
-  Q[Model & response quality] --> D{Release decision}
+  Q[Model & response quality] --> D{Product decision}
   A[Adoption] --> D
   U[Workflow success] --> D
   T[Trust & controls] --> D
@@ -42,6 +47,18 @@ flowchart LR
   D --> X[STOP]
 ```
 
+## What it catches
+
+Examples include:
+
+- strong model output with weak workflow completion
+- high usage with poor controls
+- good offline scores with failing runtime health
+- a healthy point-in-time score while the underlying trend is deteriorating
+- technically impressive behavior with weak measurable product impact
+
+The product principle is simple: **evaluation should change what gets funded, shipped, simplified or stopped.**
+
 ## Run
 
 ```bash
@@ -52,12 +69,8 @@ python -m unittest discover -s tests -v
 
 No external services or API keys are required.
 
-## What it catches
-
-Examples include strong model output with weak workflow completion, high usage with poor controls, good offline scores with failing runtime health, or a point-in-time score that looks fine while the underlying trend is deteriorating.
-
 ## Next
 
 The next iteration is versioned evaluation windows, cohort trends, confidence intervals and capability-specific release gates.
 
-This is one flagship from the broader [Ash Intelligence systems lab](https://github.com/AshIntelligence/agenticmine).
+Part of **EVALUATE** in the broader [Ash Intelligence Lab](https://github.com/AshIntelligence/agenticmine).
