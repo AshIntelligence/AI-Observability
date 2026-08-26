@@ -1,7 +1,5 @@
 # MAUTAM — AI Product Evaluation
 
-[![System checks](https://github.com/AshIntelligence/AI-Observability/actions/workflows/tests.yml/badge.svg)](https://github.com/AshIntelligence/AI-Observability/actions/workflows/tests.yml)
-
 **[▶ Try MAUTAM live](https://ash-intelligence-lab.streamlit.app/?product=mautam-evaluation)** · **[Explore the full systems lab](https://ash-intelligence-lab.streamlit.app/)**
 
 `Python · AI evaluation · observability · release gates`
